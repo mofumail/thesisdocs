@@ -259,7 +259,7 @@
           <li>Focus: synthetische generatie van gebruikersinteracties voor RS-evaluatie en training.</li>
         </ul>
       </div>
-      <div class="tagline">Doel van deze presentatie: context -> literatuurkloof -> eerste onderzoeksvraag -> voorgestelde methode.</div>
+      <div class="tagline">Doel van deze presentatie: context -> literatuurkloof -> onderzoeksvraag -> voorgestelde methode.</div>
     </section>
 
     <section class="slide" data-main="1">
@@ -274,7 +274,7 @@
     </section>
 
     <section class="slide" data-main="1">
-      <h2 class="title">2) Literatuurlandschap RS-simulatie (samengevoegd)</h2>
+      <h2 class="title">2) Literatuurlandschap RS-simulatie</h2>
       <div class="content">
         <p class="subtitle" style="margin: 0 0 10px 0;">Van algemene synthetic-data surveys [1,19,21] naar RS-specifieke simulatie [25].</p>
       </div>
@@ -337,10 +337,10 @@
       <div class="content">
         <ul>
           <li><strong>Onderzoeksvraag:</strong> In welke mate kan een transformer-gebaseerde interactiegenerator realistische synthetische interactielogs produceren voor training en evaluatie van recommendersystemen?</li>
-          <li>Hoe definiëren we een interactie in deze simulator?</li>
-          <li>Hoe modelleren we interacties zodat ze realistische sequentiële dynamiek en feedback-loops benaderen?</li>
-          <li>Welke simulatietechnieken zijn het meest geschikt voor deze interaction generator?</li>
-          <li>Welke ontwerpkeuzes zijn nodig om een overtuigende demonstrator met een recommender op te zetten?</li>
+          <li><strong>Subvraag 1:</strong> Hoe definiëren we een interactie in deze simulator?</li>
+          <li><strong>Subvraag 2:</strong> Hoe modelleren we interacties zodat ze realistische sequentiële dynamiek en feedback-loops benaderen?</li>
+          <li><strong>Subvraag 3:</strong> Welke simulatietechnieken zijn het meest geschikt voor deze interactiegenerator?</li>
+          <li><strong>Subvraag 4:</strong> Welke ontwerpkeuzes zijn nodig om een overtuigende demonstrator met een recommender op te zetten?</li>
         </ul>
       </div>
     </section>
@@ -350,14 +350,16 @@
       <div class="content">
         <ul>
           <li>Doel: volledige interactietuple per tijdstap genereren, niet alleen next-item voorspellen.</li>
-          <li>Causale generatie over sessiegeschiedenis met controleerbare output-constraints.</li>
+          <li>Rijke interactiedefinitie (literatuursynthese): tijd + action/item + exposure context + optionele outcome.</li>
+          <li>Inputrepresentatie via embeddings per event-token (item/action/context) + temporele features; causale generatie over sessiegeschiedenis.</li>
         </ul>
       </div>
-      <div class="formula">(user_id, session_id, action_type, item_id, delta_t, context_t)
+      <div class="formula">(user_id, session_id, action_type, item_id, delta_t, exposure_context_t, outcome_t?)
 
 Head A: p(action_t | history)
 Head B: p(item_t | action_t, history)
-Head C: p(delta_t_t | action_t, item_t, history)</div>
+Head C: p(delta_t_t | action_t, item_t, history)
+Head D (optioneel): p(exposure_context_t, outcome_t | action_t, item_t, history)</div>
     </section>
 
     <section class="slide" data-main="0">
