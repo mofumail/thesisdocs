@@ -37,7 +37,7 @@
       position: absolute;
       inset: 0;
       display: none;
-      padding: 56px 72px 132px 72px;
+      padding: 44px 44px 120px 44px;
       box-sizing: border-box;
     }
 
@@ -46,25 +46,25 @@
     }
 
     .title {
-      font-size: 2.2rem;
+      font-size: 2.45rem;
       line-height: 1.2;
-      margin: 0 0 14px 0;
+      margin: 0 0 16px 0;
       color: var(--accent);
       font-weight: 700;
       letter-spacing: 0.2px;
     }
 
     .subtitle {
-      font-size: 1.2rem;
+      font-size: 1.28rem;
       color: var(--muted);
       margin: 0 0 22px 0;
       line-height: 1.4;
     }
 
     .content {
-      font-size: 1.35rem;
-      line-height: 1.45;
-      max-width: 1180px;
+      font-size: 1.45rem;
+      line-height: 1.42;
+      max-width: none;
     }
 
     ul {
@@ -89,9 +89,9 @@
     .grid-2x3 {
       margin-top: 18px;
       display: grid;
-      grid-template-columns: repeat(3, minmax(220px, 1fr));
-      gap: 14px;
-      max-width: 1160px;
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap: 16px;
+      max-width: none;
     }
 
     .card {
@@ -100,18 +100,18 @@
       border-radius: 12px;
       padding: 16px;
       box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
-      min-height: 125px;
+      min-height: 148px;
     }
 
     .card h3 {
       margin: 0 0 8px 0;
-      font-size: 1.05rem;
+      font-size: 1.14rem;
       color: #133b5c;
     }
 
     .card p {
       margin: 0;
-      font-size: 0.97rem;
+      font-size: 1.04rem;
       color: #3f4c5f;
       line-height: 1.35;
     }
@@ -132,7 +132,7 @@
       border-radius: 10px;
       background: #f9fbff;
       font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
-      font-size: 1.06rem;
+      font-size: 1.14rem;
       line-height: 1.5;
       white-space: pre-wrap;
     }
@@ -168,11 +168,32 @@
       left: 26px;
       right: 26px;
       bottom: 40px;
-      font-size: 0.5rem;
+      font-size: 0.56rem;
       line-height: 1.2;
       color: #5f6674;
       column-count: 2;
       column-gap: 16px;
+    }
+
+    @media (max-width: 1200px) {
+      .slide {
+        padding: 34px 26px 104px 26px;
+      }
+      .title {
+        font-size: 2.05rem;
+      }
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      .content {
+        font-size: 1.16rem;
+      }
+      .grid-2x3 {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+      }
+      .citation-box {
+        column-count: 1;
+      }
     }
 
     .citation-box p {
