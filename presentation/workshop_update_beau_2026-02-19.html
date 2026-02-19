@@ -300,16 +300,15 @@
     </section>
 
     <section class="slide" data-main="1">
-      <h2 class="title">3) Literatuurkloof (kern)</h2>
+      <h2 class="title">3) Literature gap</h2>
       <div class="content">
         <ul>
           <li>RS-simulatie literatuur en sequential recommendation literatuur zijn parallel ontwikkeld.</li>
           <li>Simulatiepapers genereren data, maar gebruiken nauwelijks transformer-gebaseerde sequence models.</li>
           <li>Sequential recommendation papers (SASRec/BERT4Rec/BST) zijn sterk in modellering, maar focussen op predictie i.p.v. log-generatie.</li>
-          <li><strong>Kloof:</strong> de modellen die gebruikerssequenties het best begrijpen, worden niet ingezet om die interacties te simuleren.</li>
+          <li>Gap: de modellen die gebruikerssequenties het best begrijpen, worden niet ingezet om die interacties te simuleren.</li>
         </ul>
       </div>
-      <div class="tagline">Deze thesis overbrugt de kloof door een autoregressieve transformer in te zetten als interaction generator.</div>
     </section>
 
     <section class="slide" data-main="1">
@@ -336,19 +335,6 @@
 Head A: p(action_t | history)
 Head B: p(item_t | action_t, history)
 Head C: p(delta_t_t | action_t, item_t, history)</div>
-      <div class="tagline">Praktisch: prefix-conditioning en validiteitsregels (bv. geen purchase zonder eerdere view/cart).</div>
-    </section>
-
-    <section class="slide" data-main="1">
-      <h2 class="title">6) Labomgeving, eerste indruk en volgende stappen</h2>
-      <div class="content">
-        <ul>
-          <li>Labomgeving en dagelijkse routine: kort mondeling toe te lichten.</li>
-          <li>Eerste indruk: duidelijke literatuurrichting en haalbare modelkeuze voor component (2).</li>
-          <li>Volgende stappen: baselinevergelijking, fidelity-metrics, downstream RS-evaluatie.</li>
-          <li>Feedbackvraag: welke evaluatiemetrieken zijn essentieel om deze simulator overtuigend te maken?</li>
-        </ul>
-      </div>
     </section>
 
     <section class="slide" data-main="0">
