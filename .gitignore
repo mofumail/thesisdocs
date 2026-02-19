@@ -1,0 +1,3 @@
+.venv_slides/
+__pycache__/
+*.pyc

@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Afstudeerupdate - Beau - 19 februari 2026</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --accent: #0f4c81;
+      --accent-2: #0ea5a8;
+      --warn: #c2410c;
+      --line: #dbe2ea;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 10%, #ffffff 0%, var(--bg) 70%);
+      color: var(--ink);
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      padding: 56px 72px 132px 72px;
+      box-sizing: border-box;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .title {
+      font-size: 2.2rem;
+      line-height: 1.2;
+      margin: 0 0 14px 0;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 0 0 22px 0;
+      line-height: 1.4;
+    }
+
+    .content {
+      font-size: 1.35rem;
+      line-height: 1.45;
+      max-width: 1180px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    li {
+      margin: 0.45em 0;
+    }
+
+    .tagline {
+      margin-top: 24px;
+      padding: 12px 14px;
+      border-left: 4px solid var(--accent-2);
+      background: #f0fbfb;
+      border-radius: 6px;
+      color: #0b4144;
+      font-size: 1.08rem;
+    }
+
+    .grid-2x3 {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 14px;
+      max-width: 1160px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+      min-height: 125px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.05rem;
+      color: #133b5c;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.97rem;
+      color: #3f4c5f;
+      line-height: 1.35;
+    }
+
+    .card.missing {
+      border: 2px dashed var(--warn);
+      background: #fff7ed;
+    }
+
+    .card.missing h3 {
+      color: #9a3412;
+    }
+
+    .formula {
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #f9fbff;
+      font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+      font-size: 1.06rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .backup {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 0.9rem;
+      color: #7c2d12;
+      background: #ffedd5;
+      border: 1px solid #fed7aa;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .footer {
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #718096;
+      font-size: 0.88rem;
+    }
+
+    .citation-box {
+      position: absolute;
+      left: 26px;
+      right: 26px;
+      bottom: 40px;
+      font-size: 0.5rem;
+      line-height: 1.2;
+      color: #5f6674;
+      column-count: 2;
+      column-gap: 16px;
+    }
+
+    .citation-box p {
+      margin: 0 0 4px 0;
+      break-inside: avoid;
+    }
+
+    .progress {
+      height: 6px;
+      border-radius: 999px;
+      background: #dde5ef;
+      overflow: hidden;
+      width: 220px;
+    }
+
+    .progress > div {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 220ms ease;
+    }
+
+    .help {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 0.8rem;
+      color: #667085;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 6px 8px;
+    }
+
+    @media print {
+      body {
+        overflow: visible;
+        background: #ffffff;
+      }
+      .help, .footer {
+        display: none;
+      }
+      .slide {
+        position: relative;
+        display: block !important;
+        page-break-after: always;
+        width: 100%;
+        height: auto;
+        min-height: 95vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="help">Navigatie: pijl links/rechts, spatie, PgUp/PgDn</div>
+  <main class="deck" id="deck">
+    <section class="slide active" data-main="1">
+      <h1 class="title">Afstudeerupdate: Interaction Generator voor Recommender Systems</h1>
+      <p class="subtitle">Expert Workshop PvA tips + Projectvoorstel<br>19 februari 2026</p>
+      <div class="content">
+        <ul>
+          <li>Korte update over literatuur, probleemdefinitie en voorgestelde onderzoeksrichting.</li>
+          <li>Focus: synthetische generatie van gebruikersinteracties voor RS-evaluatie en training.</li>
+        </ul>
+      </div>
+      <div class="tagline">Doel van deze presentatie: context -> literatuurkloof -> eerste onderzoeksvraag -> voorgestelde methode.</div>
+    </section>
+
+    <section class="slide" data-main="1">
+      <h2 class="title">1) Korte context van het onderzoeksgebied</h2>
+      <div class="content">
+        <ul>
+          <li>Recommender systems worden vaak op statische data beoordeeld, terwijl gebruikersgedrag dynamisch en sequentieel is.</li>
+          <li>Voor realistische benchmarking zijn synthetische interactielogs nodig (actie, item, timing, context).</li>
+          <li>In deze opdracht: component (1) arrivals bestaat al; component (2) interaction generation moet beter.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide" data-main="1">
+      <h2 class="title">2) Literatuurlandschap RS-simulatie (samengevoegd)</h2>
+      <div class="content">
+        <p class="subtitle" style="margin: 0 0 10px 0;">Van algemene synthetic-data surveys [1,19,21] naar RS-specifieke simulatie [25].</p>
+      </div>
+      <div class="grid-2x3">
+        <article class="card">
+          <h3>GAN-gebaseerd</h3>
+          <p>UserSim [27], Bobadilla [3], Chen [7] - krachtig, maar gevoelig voor stabiliteitsproblemen.</p>
+        </article>
+        <article class="card">
+          <h3>Bayesiaans / probabilistisch</h3>
+          <p>Bayesian networks en probabilistische modellen voor gestructureerde synthese en interpretatie.</p>
+        </article>
+        <article class="card">
+          <h3>Statistisch / regelgebaseerd</h3>
+          <p>DataGenCARS [13], Jakomin [18], Markov-achtige streamgeneratoren - controleerbaar, maar vaak beperkt in lange afhankelijkheden.</p>
+        </article>
+        <article class="card">
+          <h3>Simulatieplatforms</h3>
+          <p>SIREN [4], T-RECS [22] - scenario- en feedback-loop analyse op systeemniveau.</p>
+        </article>
+        <article class="card">
+          <h3>Process-based</h3>
+          <p>Accordion [24] - trainbare dynamiek met expliciete tijd/visit-modellering.</p>
+        </article>
+        <article class="card missing">
+          <h3>Transformers voor generatie</h3>
+          <p>Sterk in sequential recommendation, maar vrijwel afwezig als directe interaction generator in RS-simulatie.</p>
+        </article>
+      </div>
+      <div class="citation-box">
+        <p>[1] M. Abufadda and K. Mansour, "A Survey of Synthetic Data Generation for Machine Learning," ACIT, 2021. https://doi.org/10.1109/ACIT53391.2021.9677302</p>
+        <p>[19] J. Jordon et al., "Synthetic Data-What, why and how?," arXiv:2205.03257, 2022. http://arxiv.org/abs/2205.03257</p>
+        <p>[21] Y. Lu et al., "Machine Learning for Synthetic Data Generation: A Review," arXiv:2302.04062, 2024. http://arxiv.org/abs/2302.04062</p>
+        <p>[25] E. Stavinova et al., "Synthetic Data-Based Simulators for Recommender Systems: A Survey," arXiv:2206.11338, 2022. http://arxiv.org/abs/2206.11338</p>
+        <p>[27] X. Zhao et al., "UserSim: User Simulation via Supervised Generative Adversarial Network," WWW, 2021. https://doi.org/10.1145/3442381.345012</p>
+        <p>[3] J. Bobadilla et al., "Creating synthetic datasets for collaborative filtering recommender systems using GANs," Knowledge-Based Systems, 2023. https://doi.org/10.1016/j.knosys.2023.111016</p>
+        <p>[7] X. Chen et al., "Generative Adversarial Reward Learning for Generalized Behavior Tendency Inference," arXiv:2105.00822, 2021. http://arxiv.org/abs/2105.00822</p>
+        <p>[13] M. del Carmen Rodriguez-Hernandez et al., "DataGenCARS: A generator of synthetic data for the evaluation of context-aware recommendation systems," Pervasive and Mobile Computing, 2017. https://doi.org/10.1016/j.pmcj.2016.09.020</p>
+        <p>[18] M. Jakomin, T. Curk, and Z. Bosnic, "Generating inter-dependent data streams for recommender systems," Simulation Modelling Practice and Theory, 2018. https://doi.org/10.1016/j.simpat.2018.07.013</p>
+        <p>[4] D. Bountouridis et al., "SIREN: A Simulation Framework for Understanding the Effects of Recommender Systems in Online News Environments," FAT*, 2019. https://doi.org/10.1145/3287560.3287583</p>
+        <p>[22] E. Lucherini et al., "T-RECS: A Simulation Tool to Study the Societal Impact of Recommender Systems," arXiv:2107.08959, 2021. http://arxiv.org/abs/2107.08959</p>
+        <p>[24] J. McInerney et al., "Accordion: A Trainable Simulator for Long-Term Interactive Systems," RecSys, 2021. https://doi.org/10.1145/3460231.3474259</p>
+      </div>
+    </section>
+
+    <section class="slide" data-main="1">
+      <h2 class="title">3) Literatuurkloof (kern)</h2>
+      <div class="content">
+        <ul>
+          <li>RS-simulatie literatuur en sequential recommendation literatuur zijn parallel ontwikkeld.</li>
+          <li>Simulatiepapers genereren data, maar gebruiken nauwelijks transformer-gebaseerde sequence models.</li>
+          <li>Sequential recommendation papers (SASRec/BERT4Rec/BST) zijn sterk in modellering, maar focussen op predictie i.p.v. log-generatie.</li>
+          <li><strong>Kloof:</strong> de modellen die gebruikerssequenties het best begrijpen, worden niet ingezet om die interacties te simuleren.</li>
+        </ul>
+      </div>
+      <div class="tagline">Deze thesis overbrugt de kloof door een autoregressieve transformer in te zetten als interaction generator.</div>
+    </section>
+
+    <section class="slide" data-main="1">
+      <h2 class="title">4) Eerste draft onderzoeksvraag</h2>
+      <div class="content">
+        <ul>
+          <li><strong>RQ:</strong> Hoe en in welke mate kan een autoregressieve transformer realistische synthetische gebruikersinteractielogs genereren voor training en evaluatie van recommender systems?</li>
+          <li>Subvraag: presteert dit beter dan regel/statistische en GAN-gebaseerde alternatieven?</li>
+          <li>Werkhypothese: hogere sequentiele fideliteit + betere downstream utility.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide" data-main="1">
+      <h2 class="title">5) Voorgestelde methode: multi-head autoregressieve transformer</h2>
+      <div class="content">
+        <ul>
+          <li>Doel: volledige interactietuple per tijdstap genereren, niet alleen next-item voorspellen.</li>
+          <li>Causale generatie over sessiegeschiedenis met controleerbare output-constraints.</li>
+        </ul>
+      </div>
+      <div class="formula">(user_id, session_id, action_type, item_id, delta_t, context_t)
+
+Head A: p(action_t | history)
+Head B: p(item_t | action_t, history)
+Head C: p(delta_t_t | action_t, item_t, history)</div>
+      <div class="tagline">Praktisch: prefix-conditioning en validiteitsregels (bv. geen purchase zonder eerdere view/cart).</div>
+    </section>
+
+    <section class="slide" data-main="1">
+      <h2 class="title">6) Labomgeving, eerste indruk en volgende stappen</h2>
+      <div class="content">
+        <ul>
+          <li>Labomgeving en dagelijkse routine: kort mondeling toe te lichten.</li>
+          <li>Eerste indruk: duidelijke literatuurrichting en haalbare modelkeuze voor component (2).</li>
+          <li>Volgende stappen: baselinevergelijking, fidelity-metrics, downstream RS-evaluatie.</li>
+          <li>Feedbackvraag: welke evaluatiemetrieken zijn essentieel om deze simulator overtuigend te maken?</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide" data-main="0">
+      <div class="backup">Backup slide</div>
+      <h2 class="title">Backup A) Waarom AR-transformer i.p.v. GAN?</h2>
+      <div class="content">
+        <ul>
+          <li><strong>Discrete outputs:</strong> interactiedata is token-achtig (actie, item, eventvolgorde).</li>
+          <li><strong>Trainingstabiliteit:</strong> mode collapse kan gedragsdiversiteit schaden [11], [16].</li>
+          <li><strong>Sequential fit:</strong> autoregressie volgt natuurlijke sessie-opbouw stap voor stap.</li>
+          <li><strong>Controllability:</strong> prefix-conditioning + constraints tijdens decodering.</li>
+          <li><strong>Evaluatie:</strong> expliciete likelihood per stap ondersteunt heldere modelvergelijking.</li>
+        </ul>
+      </div>
+      <div class="citation-box">
+        <p>[11] A. Creswell et al., "Generative Adversarial Networks: An Overview," IEEE Signal Processing Magazine, 2018. https://doi.org/10.1109/MSP.2017.2765202</p>
+        <p>[16] A. Figueira and B. Vaz, "Survey on Synthetic Data Generation, Evaluation Methods and GANs," Mathematics, 2022. https://doi.org/10.3390/math10152733</p>
+      </div>
+    </section>
+
+    <section class="slide" data-main="0">
+      <div class="backup">Backup slide</div>
+      <h2 class="title">Backup B) Referenties (selectie)</h2>
+      <div class="content">
+        <ul>
+          <li>[25] Stavinova et al. - Synthetic Data-Based Simulators for RS (survey)</li>
+          <li>[4] SIREN, [22] T-RECS, [24] Accordion, [13] DataGenCARS, [18] Jakomin</li>
+          <li>[3] Bobadilla, [27] UserSim, [7] Chen (GAN-based alternatieven)</li>
+          <li>[1], [19], [21] algemene synthetic-data surveys</li>
+          <li>[11], [16] GAN-uitdagingen (overzicht/survey)</li>
+        </ul>
+      </div>
+      <div class="citation-box">
+        <p>[25] E. Stavinova et al., "Synthetic Data-Based Simulators for Recommender Systems: A Survey," arXiv:2206.11338, 2022. http://arxiv.org/abs/2206.11338</p>
+        <p>[4] D. Bountouridis et al., "SIREN: A Simulation Framework for Understanding the Effects of Recommender Systems in Online News Environments," FAT*, 2019. https://doi.org/10.1145/3287560.3287583</p>
+        <p>[22] E. Lucherini et al., "T-RECS: A Simulation Tool to Study the Societal Impact of Recommender Systems," arXiv:2107.08959, 2021. http://arxiv.org/abs/2107.08959</p>
+        <p>[24] J. McInerney et al., "Accordion: A Trainable Simulator for Long-Term Interactive Systems," RecSys, 2021. https://doi.org/10.1145/3460231.3474259</p>
+        <p>[13] M. del Carmen Rodriguez-Hernandez et al., "DataGenCARS: A generator of synthetic data for the evaluation of context-aware recommendation systems," Pervasive and Mobile Computing, 2017. https://doi.org/10.1016/j.pmcj.2016.09.020</p>
+        <p>[18] M. Jakomin, T. Curk, and Z. Bosnic, "Generating inter-dependent data streams for recommender systems," Simulation Modelling Practice and Theory, 2018. https://doi.org/10.1016/j.simpat.2018.07.013</p>
+        <p>[3] J. Bobadilla et al., "Creating synthetic datasets for collaborative filtering recommender systems using GANs," Knowledge-Based Systems, 2023. https://doi.org/10.1016/j.knosys.2023.111016</p>
+        <p>[27] X. Zhao et al., "UserSim: User Simulation via Supervised Generative Adversarial Network," WWW, 2021. https://doi.org/10.1145/3442381.345012</p>
+        <p>[7] X. Chen et al., "Generative Adversarial Reward Learning for Generalized Behavior Tendency Inference," arXiv:2105.00822, 2021. http://arxiv.org/abs/2105.00822</p>
+        <p>[1] M. Abufadda and K. Mansour, "A Survey of Synthetic Data Generation for Machine Learning," ACIT, 2021. https://doi.org/10.1109/ACIT53391.2021.9677302</p>
+        <p>[19] J. Jordon et al., "Synthetic Data-What, why and how?," arXiv:2205.03257, 2022. http://arxiv.org/abs/2205.03257</p>
+        <p>[21] Y. Lu et al., "Machine Learning for Synthetic Data Generation: A Review," arXiv:2302.04062, 2024. http://arxiv.org/abs/2302.04062</p>
+        <p>[11] A. Creswell et al., "Generative Adversarial Networks: An Overview," IEEE Signal Processing Magazine, 2018. https://doi.org/10.1109/MSP.2017.2765202</p>
+        <p>[16] A. Figueira and B. Vaz, "Survey on Synthetic Data Generation, Evaluation Methods and GANs," Mathematics, 2022. https://doi.org/10.3390/math10152733</p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div id="counter">Slide 1 / 9</div>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <span id="mainFlag">Main</span>
+        <div class="progress"><div id="bar"></div></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const counter = document.getElementById('counter');
+      const bar = document.getElementById('bar');
+      const mainFlag = document.getElementById('mainFlag');
+      let idx = 0;
+
+      function render() {
+        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+        counter.textContent = `Slide ${idx + 1} / ${slides.length}`;
+        bar.style.width = `${((idx + 1) / slides.length) * 100}%`;
+        const isMain = slides[idx].dataset.main === "1";
+        mainFlag.textContent = isMain ? "Main" : "Backup";
+      }
+
+      function next() {
+        idx = Math.min(idx + 1, slides.length - 1);
+        render();
+      }
+
+      function prev() {
+        idx = Math.max(idx - 1, 0);
+        render();
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) {
+          e.preventDefault();
+          next();
+        }
+        if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) {
+          e.preventDefault();
+          prev();
+        }
+        if (e.key === 'Home') {
+          idx = 0;
+          render();
+        }
+        if (e.key === 'End') {
+          idx = slides.length - 1;
+          render();
+        }
+      });
+
+      window.addEventListener('click', (e) => {
+        if (e.clientX > window.innerWidth * 0.55) next();
+        else prev();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
