@@ -5,7 +5,7 @@ This file covers Tier 3 papers from `paper_reading_questions.md` in the required
 ## 1) Generative Adversarial Networks: An Overview (Creswell et al., 2018)
 
 ### Availability
-Local file contains abstract only (`Generative_Adversarial_Networks:_An_Overview.md`), and arXiv full text (`1710.07035`) was reviewed for high-level details.
+Local file contains abstract only (`Generative_Adversarial_Networks_An_Overview.md`), and arXiv full text (`1710.07035`) was reviewed for high-level details.
 
 ### Q1. What problem does this paper solve?
 It explains GAN fundamentals and variants, and clarifies why GANs are useful for representation learning without extensive labels.

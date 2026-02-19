@@ -285,7 +285,7 @@ No such mention is visible in the available abstract/snippet text.
 ## 6) DataGenCARS: A generator of synthetic data for the evaluation of context-aware recommendation systems (del Carmen et al., 2017)
 
 ### Availability
-Only an abstract/introduction/snippet `.md` source is available locally (`DataGenCARS: A generator of synthetic data for the evaluation of context-aware recommendation systems.md`). Full text appears access-restricted.
+Only an abstract/introduction/snippet `.md` source is available locally (`DataGenCARS_A_generator_of_synthetic_data_for_the_evaluation_of_context_aware_recommendation_systems.md`). Full text appears access-restricted.
 
 ### Q1. What problem does this paper solve?
 It addresses the lack of suitable context-rich datasets for evaluating context-aware recommender systems (CARS).
@@ -393,4 +393,3 @@ Need for explicit/standardized user-choice assumptions, realistic non-recommenda
 
 ### Q17. Do they mention transformers/autoregressive models?
 No transformer/autoregressive modeling focus; the paper is primarily economic/behavioral modeling guidance.
-
