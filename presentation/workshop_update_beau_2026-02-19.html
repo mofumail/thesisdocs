@@ -260,27 +260,27 @@
       <div class="grid-2x3">
         <article class="card">
           <h3>GAN-gebaseerd</h3>
-          <p>UserSim [27], Bobadilla [3], Chen [7] - krachtig, maar gevoelig voor stabiliteitsproblemen.</p>
+          <p>UserSim [27], Bobadilla [3], Chen [7]. Pro: hoge expressiviteit voor complex gedrag. Con: training kan instabiel zijn en gebruikt vaak fixed-window/padding.</p>
         </article>
         <article class="card">
           <h3>Bayesiaans / probabilistisch</h3>
-          <p>Bayesian networks en probabilistische modellen voor gestructureerde synthese en interpretatie.</p>
+          <p>Bayesian networks en probabilistische modellen. Pro: interpreteerbaar met expliciete onzekerheid. Con: vaak tabulair/static en zwakker voor lange sequenties.</p>
         </article>
         <article class="card">
           <h3>Statistisch / regelgebaseerd</h3>
-          <p>DataGenCARS [13], Jakomin [18], Markov-achtige streamgeneratoren - controleerbaar, maar vaak beperkt in lange afhankelijkheden.</p>
+          <p>DataGenCARS [13], Jakomin [18], Markov-achtige streamgeneratoren. Pro: sterk controleerbaar en snel op te zetten. Con: vaak beperkt in lange afhankelijkheden en rijk gedrag.</p>
         </article>
         <article class="card">
           <h3>Simulatieplatforms</h3>
-          <p>SIREN [4], T-RECS [22] - scenario- en feedback-loop analyse op systeemniveau.</p>
+          <p>SIREN [4], T-RECS [22]. Pro: sterk voor scenario- en feedback-loop what-if analyses. Con: uitkomsten hangen sterk af van aannames en calibratie.</p>
         </article>
         <article class="card">
           <h3>Process-based</h3>
-          <p>Accordion [24] - trainbare dynamiek met expliciete tijd/visit-modellering.</p>
+          <p>Accordion [24]. Pro: expliciete tijd/visit-dynamiek met variabele trajecten. Con: modelaannames (bv. Poisson) kunnen gedrag beperken.</p>
         </article>
         <article class="card missing">
           <h3>Transformers voor generatie</h3>
-          <p>Sterk in sequential recommendation, maar vrijwel afwezig als directe interaction generator in RS-simulatie.</p>
+          <p>Pro: sterk in lange sequence-modellering. Con: nog weinig directe inzet als interaction generator in RS-simulatie.</p>
         </article>
       </div>
       <div class="citation-box">
@@ -315,9 +315,9 @@
       <h2 class="title">4) Eerste draft onderzoeksvraag</h2>
       <div class="content">
         <ul>
-          <li><strong>RQ:</strong> Hoe en in welke mate kan een autoregressieve transformer realistische synthetische gebruikersinteractielogs genereren voor training en evaluatie van recommender systems?</li>
-          <li>Subvraag: presteert dit beter dan regel/statistische en GAN-gebaseerde alternatieven?</li>
-          <li>Werkhypothese: hogere sequentiele fideliteit + betere downstream utility.</li>
+          <li><strong>Onderzoeksvraag:</strong> In welke mate kan een transformer-gebaseerde interactiegenerator realistische synthetische interactielogs produceren voor training en evaluatie van recommendersystemen?</li>
+          <li>Focus: een heldere interactiedefinitie en realistische sequentiële dynamiek met feedback-loops.</li>
+          <li>Vergelijking met GAN- en statistische/regelgebaseerde alternatieven op realisme, fideliteit en downstream prestaties.</li>
         </ul>
       </div>
     </section>
